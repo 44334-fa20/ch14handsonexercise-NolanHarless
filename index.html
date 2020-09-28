@@ -1,13 +1,66 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 	<head> 
-		<title>LASTNAME Chapter14HandsOnExercise</title> 
+		<title>HARLESS Chapter14HandsOnExercise</title> 
 		<meta charset="utf-8"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 		<style>
-		
+		  input { display: block;
+        margin-bottom: 1em;
+        }
+label { float: left;
+        width: 5em;
+		padding-right: 1em;
+        text-align: right; 
+}
+            .fotorama{
+                width: 25%;
+            }
 		</style>
 	</head> 
 <body> 
+    <h1>ch14 JavaScript Form Handling</h1>
+    
+    <form method="post"
+    action="http://webdevbasics.net/scripts/demo.php"
+    onsubmit="return validateForm();">
+        <label for="userName">Name:</label>
+        <input type="text" name="userName" id="userName">
+        <label for="userAge">Age:</label>
+        <input type="text" name="userAge" id="userAge">
+        <label for="userCity">City:</label>
+        <input type="text" name="userCity" id="userCity">
+        <input type="submit" value="Send information" id="submit">
+</form>
+    
+        <h1>Slideshow</h1>
+    <div class="fotorama" data-autoplay="true">
+        <img src="photo1.jpg" data-caption="Photo of me." alt="Photo of Nolan Harless">
+        <img src="photo2.jpg" data-caption="Photo of my dog" alt="Photo of my dog">
+        <img src="photo3.jpg" data-caption="Another photo of my dog" alt="Another photo of my dog.">
+    
+    </div>
 
+    <script>
+    function validateForm(){
+        if(document.forms[0].userName.value == ""){
+            alert("Name field cannot be empty.");
+            return false;
+        }
+        else if(document.forms[0].userAge.value < 18){
+            alert("Age field cannot be less than 18.");
+            return false;
+        }
+        else if(document.forms[0].userCity.value == ""){
+            alert("Must enter city.");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+</script>
 </body> 
 </html> 
